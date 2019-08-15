@@ -24,6 +24,8 @@ In addition, this project will include:
 
 ## Wireframes
 
+<img width="828" alt="Screen Shot 2019-08-14 at 10 24 59 PM" src="https://user-images.githubusercontent.com/43277513/63068785-7e28cc00-bee2-11e9-9cf5-98b19130a908.png">
+
 ## Implementation Timeline
 
 * 8/15: Familiarization with API and libaries associated with project, project setup, plan of attack
