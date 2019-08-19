@@ -2,7 +2,7 @@
   "name": "GroupScoop",
   "version": "1.0.0",
   "description": "",
-  "main": "group_scoop.js",
+  "main": "app.js",
   "browserslist": [
     "last 1 version",
     "> 1%",
@@ -10,9 +10,9 @@
     "not dead"
   ],
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js",
-    "watch": "webpack --watch --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js  --optimize-minimize"
+    "build": "webpack --watch --mode=development",
+    "start": "node app.js",
+    "start:debug": "DEBUG=* node app.js"
   },
   "repository": {
     "type": "git",
@@ -26,21 +26,20 @@
   },
   "homepage": "https://github.com/elico5/GroupScoop#readme",
   "dependencies": {
-    "autoprefixer": "^9.6.1",
+    "animejs": "^3.1.0",
+    "axios": "^0.19.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^3.2.0",
     "d3": "^5.9.7",
+    "express": "^4.17.1",
     "moment": "^2.24.0",
-    "postcss-loader": "^3.0.0",
-    "style-loader": "^1.0.0",
+    "node-fetch": "^2.6.0",
     "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.8.0",
-    "webpack-merge": "^4.2.1"
+    "webpack-cli": "^3.3.6"
   },
   "devDependencies": {
-    "mini-css-extract-plugin": "^0.8.0"
+    "nodemon": "^1.19.1"
   }
 }
