@@ -1,4 +1,4 @@
-import { getScoopUserInfo } from './javascripts/actions/get_scoop_user';
+import { getScoopUserInfo } from './javascripts/api/get_scoop_user';
 import { groupmeUrl, linkedinUrl, portfolioUrl, githubUrl, openNewTab } from './javascripts/util/footer_links';
 
 const groupScoopState = {
@@ -6,7 +6,8 @@ const groupScoopState = {
     groups: {},
     ui: {
       groups: {
-        loadedAll: false
+        loadedAll: false,
+        selected: 0
       }
     }
 };

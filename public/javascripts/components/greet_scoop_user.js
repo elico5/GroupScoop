@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { groupLoad } from '../actions/load';
+import { groupLoad } from '../api/load';
 
 export default state => {
     document.getElementById('user-greeting-image').src = state.scoopUser.imageUrl;

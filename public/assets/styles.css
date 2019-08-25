@@ -15,9 +15,10 @@
 
 :root {
     --bright-blue: #00AFF0;
-    --light-blue: #CCFFFF;
+    --light-blue: #e5f1f6;
     --white: #FFFFFF;
     --dark-gray: #666666;
+    --accent-gray: #ccc;
     --light-gray: #EEEEEE;
     --error-red: #FF595E;
 }
@@ -41,6 +42,13 @@ button:hover {
 
 button i {
     color: var(--light-gray);
+}
+
+.hr {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid var(--accent-gray);
+    margin: 10px 0;
 }
 
 /* MAIN */
@@ -67,6 +75,103 @@ button i {
     width: calc(66% - 25px);
 }
 
+/* GROUP SELECT */
+
+#group-select-outer-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#group-select-inner-container {
+    width: calc(100% - 40px);
+    height: calc(100% - 100px);
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#group-select-prompt-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#group-select-prompt-text {
+    width: calc(100% - 90px);
+    text-align: center;
+}
+
+#group-select-show-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px 10px 10px;
+    text-align: center;
+}
+
+#group-select-show-container i {
+    margin-right: 5px;
+}
+
+.group-select-user-image-container {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    border-radius: 4px;
+    position: relative;
+}
+
+#group-select-user-image {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 4px;
+}
+
+#group-select-left-title {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.group-select-group-image-container {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 4px;
+    position: relative;
+    margin: 10px;
+}
+
+#group-select-group-image {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 4px;
+}
+
+#group-select-left-description {
+    margin-bottom: 5px;
+}
+
+#get-the-scoop-button {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    width: calc(100% - 160px);
+    font-size: 20px;
+    height: 40px;
+}
+
 /* GROUP LIST */
 
 #group-list-outer-container {
@@ -79,7 +184,7 @@ button i {
     margin: 20px;
     width: calc(100% - 40px);
     height: calc(100% - 100px);
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--accent-gray);
 }
 
 #next-page-button, #prev-page-button {
@@ -100,6 +205,7 @@ button i {
 
 #prev-page-button {
     left: 20px;
+    display: none;
 }
 
 #prev-page-button i {
@@ -114,8 +220,20 @@ button i {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--accent-gray);
     padding: 3px 0;
+}
+
+.group-item-container:hover {
+    cursor: pointer;
+    background-color: var(--light-blue);
+}
+
+.selected {
+    border-radius: 4px;
+    border: 3px solid var(--bright-blue);
+    background-color: var(--accent-gray);
+    width: calc(100% - 6px);
 }
 
 .group-item-image-container {
@@ -124,6 +242,7 @@ button i {
     overflow: hidden;
     border-radius: 4px;
     position: relative;
+    margin-left: 6px;
 }
 
 .group-item-image {
@@ -133,6 +252,7 @@ button i {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 4px;
 }
 
 .group-item-heading-container {
@@ -147,6 +267,10 @@ button i {
 .group-item-details-container {
     width: calc(18%);
     margin: 0 10px;
+}
+
+.group-item-members, .group-item-messages {
+    margin: 5px 0;
 }
 
 .group-item-details-container i {
@@ -251,6 +375,7 @@ button i {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 4px;
 }
 
 #user-greeting-heading {

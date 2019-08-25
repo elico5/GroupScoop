@@ -42,6 +42,37 @@ app.get('/user/:api_key/groups/page/:page_number', (request, response) => {
     );
 });
 
+// GroupScoop initial group messages 
+app.get('/user/:api_key/groups/:group_id/messages', (request, response) => {
+    fetch(baseUrl + `/groups/${request.params.group_id}/messages?token=${request.params.api_key}&limit=100`).then(
+        fetchResponse => fetchResponse.text()
+    ).then(
+        body => response.send(JSON.parse(body))
+    );
+})
+
+// GroupScoop group messages
+app.get('/user/:api_key/groups/:group_id/messages/:before_id', (request, response) => {
+    fetch(baseUrl + `/groups/${request.params.group_id}/messages?token=${request.params.api_key}&limit=100&before_id=${request.params.before_id}`).then(
+        fetchResponse => {
+            if (fetchResponse.status === 304) {
+                response.statusMessage = 'Fetched all messages';
+                response.status(400).end();
+            }
+            return fetchResponse.text()
+        }
+    ).then(
+        body => {
+            let results = JSON.parse(body);
+            if (results.response) {
+                response.send(results);
+            }
+        }
+    ).catch(
+        error => console.log(error)
+    )
+});
+
 app.listen(PORT, () => {
     console.log(__dirname);
     console.log(`listening on ${PORT}`)
