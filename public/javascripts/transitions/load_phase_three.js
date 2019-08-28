@@ -1,7 +1,6 @@
 import anime from 'animejs/lib/anime.es.js';
 import FetchQueue from '../util/fetch_queue';
 import initializePhaseThreeDOM from '../phase_three/initialize_dom';
-import { createDataSelectItems } from '../phase_three/create_data_select_items';
 import { getInitialMessages } from '../api/get_scoop_messages';
 import finishLoad from './finish_load';
 
