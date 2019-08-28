@@ -1,6 +1,7 @@
-import { loadGreeting } from './load';
+// import { loadGreeting } from './load';
+import loadPhaseOne from '../transitions/load_phase_one';
 
-export const getScoopUserInfo = state => {
+export default state => {
     const apiKey = document.getElementById('api-key-input').value;
     state.scoopUser.apiKey = apiKey;
     fetch(`/user/${apiKey}`).then(
@@ -17,7 +18,7 @@ export const getScoopUserInfo = state => {
                 name: state.scoopUser.name,
                 created_at: state.scoopUser.createdAt
             } = data.response);
-            loadGreeting(state);
+            loadPhaseOne(state);
         }
     ).catch(
         () => document.getElementById('api-key-error').style.display = 'block'

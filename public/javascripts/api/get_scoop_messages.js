@@ -41,6 +41,10 @@ export const getMessages = (state, beforeId, fetchQueue) => {
         }
     ).catch(
         // change name for unknown?
-        () => console.log('manipulate DOM instead of raising this message')
+        // DOM cleanup?
+        () => {
+            document.getElementById('pause-button').style.display = 'none';
+            console.log('manipulate DOM instead of raising this message');
+        }
     )
 }

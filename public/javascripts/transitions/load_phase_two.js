@@ -1,0 +1,30 @@
+import anime from 'animejs/lib/anime.es.js';
+import getScoopGroups from '../api/get_scoop_groups';
+import loadPhaseThree from '../transitions/load_phase_three';
+import { goLeft, goRight, renderGroupPrompt, renderGroupList } from '../phase_two/groups';
+import finishLoad from './finish_load';
+
+export default state => {
+    anime({
+        targets: '[class|=load-rectangle]',
+        width: '100%',
+        easing: 'easeInOutQuad',
+        delay: anime.stagger(300),
+        complete: () => {
+            document.getElementById('modal-background').style.display = 'none';
+            document.getElementById('footer-logo').style.display = 'unset';
+            document.getElementById('main').style.display = 'flex';
+            document.getElementById('footer').style.display = 'flex';
+            document.getElementById('get-the-scoop-button').addEventListener('click', () => loadPhaseThree(state));
+            document.getElementById('prev-page-button').addEventListener('click', () => goLeft(state));
+            document.getElementById('next-page-button').addEventListener('click', () => goRight(state));
+            getScoopGroups(state, 1).then(
+                () => {
+                    renderGroupPrompt(state);
+                    renderGroupList(state);
+                    finishLoad();
+                }
+            );
+        }
+    });
+};

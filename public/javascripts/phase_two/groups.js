@@ -105,7 +105,7 @@ export const renderGroupList = state => {
     const listContainerElement = document.getElementById('group-list-inner-container');
     const nextPageStart = state.ui.groups.currentPage * 5;
     for (let i = 5; i >= 1; i--) {
-        const groupIndex = nextPageStart - i; 
+        const groupIndex = nextPageStart - i;
         const group = state.groups[groupIndex];
         if (group) {
             const listItem = createGroupItem(groupIndex, group);
@@ -118,4 +118,3 @@ export const renderGroupList = state => {
     }
     renderGroupSelect(state);
 };
-

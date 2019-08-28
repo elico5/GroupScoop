@@ -1,5 +1,6 @@
 import moment from 'moment';
-import { groupLoad } from '../api/load';
+import loadPhaseTwo from '../transitions/load_phase_two';
+// import { groupLoad } from '../api/load';
 
 export default state => {
     document.getElementById('user-greeting-image').src = state.scoopUser.imageUrl;
@@ -10,6 +11,7 @@ export default state => {
     document.getElementById('api-key-input-container').style.display = 'none';
     document.getElementById('user-greeting-container').style.display = 'flex';
     document.getElementById('keep-moving-button').addEventListener('click', () => {
-        groupLoad(state);
+        // groupLoad(state);
+        loadPhaseTwo(state);
     });
 };

@@ -27,8 +27,8 @@ export const processMessage = (message, state) => {
         // User Stats
         if (!groupDetails.members[senderId]) groupDetails.members[senderId] = newMemberSlice(null, null, message);
         const userDetails = groupDetails.members[senderId];
-        if (!userDetails.months[monthYear]) userDetails.months[monthYear] = { messageCount: 0 };
-        userDetails.months[monthYear].messageCount++;
+        if (!userDetails.months[monthYear]) userDetails.months[monthYear] = 0;
+        userDetails.months[monthYear]++;
         message.favorited_by.forEach(likerId => {
             userDetails.likesReceived++;
             if (!groupDetails.members[likerId]) groupDetails.members[likerId] = newMemberSlice(likerId);
@@ -49,8 +49,8 @@ export const processMessage = (message, state) => {
     // Group Stats
     groupDetails.processedMessageCount++;
     groupDetails.lastProcessedMessage = message.created_at;
-    if (!groupDetails.months[monthYear]) groupDetails.months[monthYear] = { messageCount: 0 };
-    groupDetails.months[monthYear].messageCount++;
+    if (!groupDetails.months[monthYear]) groupDetails.months[monthYear] = 0;
+    groupDetails.months[monthYear]++;
     if (groupDetails.topMessages.length < 10) {
         groupDetails.topMessages.push(message);
     } else {
@@ -59,6 +59,11 @@ export const processMessage = (message, state) => {
             groupDetails.topMessages.push(message);
         }
     }
+
+    // Frontend render logic 
+        // separate into another file?
+    document.getElementById('processed-message-count').innerHTML = groupDetails.processedMessageCount;
+    document.getElementById('last-processed-message').innerHTML = moment.unix(groupDetails.lastProcessedMessage).format("LLLL");
 }
 
 export const processMessages = (messages, state) => {
