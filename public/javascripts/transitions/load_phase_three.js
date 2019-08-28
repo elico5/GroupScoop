@@ -1,5 +1,6 @@
 import anime from 'animejs/lib/anime.es.js';
 import FetchQueue from '../util/fetch_queue';
+import initializePhaseThreeDOM from '../phase_three/initialize_dom';
 import { createDataSelectItems } from '../phase_three/create_data_select_items';
 import { getInitialMessages } from '../api/get_scoop_messages';
 import finishLoad from './finish_load';
@@ -13,16 +14,12 @@ export default state => {
         complete: () => {
             const fetchQueue = new FetchQueue();
             fetchQueue.start();
+            // what are these Ids?
             document.getElementById('group-select-outer-container').style.display = 'none';
             document.getElementById('group-list-outer-container').style.display = 'none';
-            // initializePhaseThreeDOM(state); 
-                // createDataSelectItems(state);
-                    // "group-filter1-button"
-                    // "[userId]-filter1-button"(s)
-                // create "group-filter2-button"(s)
-                // create "user-filter2-button"(s)
-            createDataSelectItems(state);
-            // createDataVisualizationItems(state); //?
+            // put the above 2 lines in initializeDOM?
+                // generally move these logic portions into helper files?
+            initializePhaseThreeDOM(state); 
             // visualize(state); //?
                 // * renderVisualization(state);
                     // put in process messages (or process message?)
@@ -33,7 +30,7 @@ export default state => {
             getInitialMessages(state, fetchQueue).then(
                 () => {
                     document.getElementById('data-visualization-outer-container').style.display = 'unset';
-                    document.getElementById('data-select-outer-container').style.display = 'block';
+                    document.getElementById('data-filters-container').style.display = 'block';
                     document.getElementById('pause-button').addEventListener('click', e => {
                         fetchQueue.pause();
                         e.currentTarget.style.display = 'none';

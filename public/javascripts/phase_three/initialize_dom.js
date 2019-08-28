@@ -1,4 +1,4 @@
-import { createGroupDataFilter, createUserDataFilter } from './data_filters';
+import { createDataFilters } from './data_filters';
 
 const selectGroupVizFilter = state => {
     return e => {
@@ -14,7 +14,7 @@ const selectGroupVizFilter = state => {
 }
 
 const createGroupVizFilters = state => {
-    const headers = ['Overview, Top Messages', 'Total Messages', 'Monthly', 'Most Loved', 'Most Loving',
+    const headers = ['Overview', 'Top Messages', 'Total Messages', 'Monthly', 'Most Loved', 'Most Loving',
         'Love Ratio', 'Avatars', 'Names', 'Descriptions'];
     const filterContainer = document.getElementById('group-visualization-filters');
     headers.forEach((header, i) => {
@@ -49,8 +49,8 @@ const createUserVizFilters = state => {
     const filterContainer = document.getElementById('user-visualization-filters');
     headers.forEach((header, i) => {
         const filter = document.createElement('div');
-        filter.classList.add('group-visualization-filter');
-        filter.id = 'group-viz-filter-' + parseInt(i);
+        filter.classList.add('user-visualization-filter');
+        filter.id = 'user-viz-filter-' + parseInt(i);
         filter.innerHTML = header;
         filter.setAttribute('data-viz-filter', i);
         filter.addEventListener('click', selectUserVizFilter(state));
@@ -59,10 +59,11 @@ const createUserVizFilters = state => {
 };
 
 export default state => {
-    createGroupDataFilter(state);
-    Object.values(state.groups[state.ui.groups.selected].members).forEach(memberObject => {
-        createUserDataFilter(memberObject);
-    })
+    // createGroupDataFilter(state);
+    // Object.values(state.groups[state.ui.groups.selected].members).forEach(memberObject => {
+    //     createUserDataFilter(memberObject);
+    // })
+    createDataFilters(state);
     createGroupVizFilters(state);
     createUserVizFilters(state);
 }

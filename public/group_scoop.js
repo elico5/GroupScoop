@@ -11,6 +11,10 @@ const groupScoopState = {
       groups: {
         loadedAll: false,
         selected: 0
+      },
+      phaseThree: {
+        dataFilter: 'group',
+        vizFilter: '0'
       }
     }
 };

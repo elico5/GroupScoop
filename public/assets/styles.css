@@ -275,16 +275,16 @@ button i {
     margin-right: 5px;
 }
 
-/* DATA COLLECTION */
+/* DATA FILTERS */
 
-#data-select-outer-container {
+#data-filters-container {
     display: none;
     margin: 20px;
     height: calc(100% - 40px);
     width: calc(100% - 40px);
 }
 
-#group-data-select-item, .user-data-select-item {
+#group-data-filter, .user-data-filter {
     width: calc(100% - 10px);
     padding: 5px;
     height: 50px;
@@ -295,24 +295,26 @@ button i {
     align-items: center;
 }
 
-#group-data-select-item {
+.user-data-filter:last-of-type {
+    border: none;
+}
+
+#group-data-filter {
     border: 1px solid var(--accent-gray);
 }
 
-#group-data-select-item:hover, .user-data-select-item:hover {
+#group-data-filter:hover, .user-data-filter:hover {
     cursor: pointer;
     background-color: var(--light-blue);
 }
 
-/* 
-.selected {
-    border-radius: 4px;
+#group-data-filter.selected, .user-data-filter.selected {
+    width: calc(100% - 16px);
     border: 3px solid var(--bright-blue);
     background-color: var(--accent-gray);
-    width: calc(100% - 6px);
-} */
+}
 
-#group-data-select-image-container, .user-data-select-image-container {
+#group-data-filter-image-container, .user-data-filter-image-container {
     width: 50px;
     height: 50px;
     position: relative;
@@ -320,7 +322,7 @@ button i {
     border-radius: 4px;
 }
 
-#group-data-select-image, .user-data-select-image {
+#group-data-filter-image, .user-data-filter-image {
     position: absolute;
     height: 100%;
     width: auto;
@@ -330,20 +332,20 @@ button i {
     border-radius: 4px;
 }
 
-#group-data-select-name, .user-data-select-name {
+#group-data-filter-name, .user-data-filter-name {
     font-size: 18px;
     font-weight: 900;
     width: 75%;
 }
 
-#members-select-heading {
+#members-heading {
     font-size: 18px;
     height: 30px;
     font-weight: 900;
     margin-top: 20px;
 }
 
-#data-select-inner-container {
+#user-data-filters-container {
     height: calc(100% - 112px);
     width: 100%;
     border: 1px solid var(--accent-gray);
@@ -389,7 +391,7 @@ button i {
     display: none;
 }
 
-/* VISUALIZATION CONTAINER */
+/* VISUALIZATION FILTERS */
 
 #data-visualization-inner-container {
     width: calc(100% - 40px);
@@ -399,7 +401,7 @@ button i {
     justify-content: space-between;
 }
 
-#data-visualization-inner-left-container {
+#data-visualization-filters {
     width: calc(150px - 2px);
     height: calc(100% - 2px);
     overflow: scroll;
@@ -407,11 +409,11 @@ button i {
     border-radius: 4px;
 }
 
-#group-visualization-left-container {
+#group-visualization-filters {
     height: 100%;
 }
 
-.group-visualization-left-nav-button {
+.group-visualization-filter {
     font-size: 20px;
     font-weight: 900;
     border-bottom: 1px solid var(--accent-gray);
@@ -421,16 +423,23 @@ button i {
     align-items: center;
 }
 
-.group-visualization-left-nav-button:nth-of-type(10) {
+.group-visualization-filter:last-of-type {
     border: none;
 }
 
-#user-visualization-left-container {
+.group-visualization-filter.selected {
+    width: calc(100% - 6px);
+    height: calc(10% - 6px);
+    border: 3px solid var(--bright-blue);
+    background-color: var(--accent-gray);
+}
+
+#user-visualization-filters {
     display: none;
     height: 100%;
 }
 
-.user-visualization-left-nav-button {
+.user-visualization-filter {
     font-size: 20px;
     font-weight: 900;
     border-bottom: 1px solid var(--accent-gray);
@@ -440,16 +449,23 @@ button i {
     align-items: center;
 }
 
-.user-visualization-left-nav-button:nth-of-type(5) {
+.user-visualization-filter:last-of-type {
     border: none;
 }
 
-.group-visualization-left-nav-button:hover, .user-visualization-left-nav-button:hover {
+.user-visualization-filter.selected {
+    width: calc(100% - 6px);
+    height: calc(20% - 6px);
+    border: 3px solid var(--bright-blue);
+    background-color: var(--accent-gray);
+}
+
+.group-visualization-filter:hover, .user-visualization-filter:hover {
     background-color: var(--light-blue);
     cursor: pointer;
 }
 
-#data-visualization-inner-right-container {
+#visualization-container {
     width: calc(100% - 170px);
     height: calc(100% - 2px);
     border: 1px solid var(--accent-gray);
