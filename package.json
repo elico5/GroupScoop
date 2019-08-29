@@ -10,7 +10,7 @@
     "not dead"
   ],
   "scripts": {
-    "build": "webpack --watch --mode=development",
+    "build": "webpack",
     "start": "node app.js",
     "start:debug": "DEBUG=* node app.js"
   },
