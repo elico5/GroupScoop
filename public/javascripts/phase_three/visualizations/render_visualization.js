@@ -6,9 +6,9 @@ export default state => {
     const nextVisualizationContainer = previousVisualizationContainer.cloneNode(false);
     // if group
     if (state.ui.phaseTwo.dataFilter === 'group') {
-        // render group visualization
+        // render group visualization(state, nextVisContainer)?
     } else {
-        // render user visualization
+        // render user visualization(state, nextVisContainer)?
     }
     previousVisualizationContainer.parentNode.replaceChild(nextVisualizationContainer, previousVisualizationContainer);
 }

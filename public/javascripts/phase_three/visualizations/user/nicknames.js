@@ -1,0 +1,1 @@
+// Just a list with styled nicknames
