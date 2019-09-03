@@ -1,5 +1,5 @@
 export default (state, visualizationContainer) => {
-    const groupId = state.ui.groups.selected;
+    const groupId = state.ui.phaseTwo.selected;
     const filterId = state.ui.phaseThree.dataFilter;
     const memberObject = state.groups[groupId].members[filterId];
 

@@ -1,8 +1,9 @@
 import moment from 'moment';
 import newMemberSlice from './new_member_slice';
+import renderVisualization from '../../phase_three/visualizations/render_visualization';
 
 export const processMessage = (message, state) => {
-    const groupDetails = state.groups[state.ui.groups.selected];
+    const groupDetails = state.groups[state.ui.phaseTwo.selected];
     const senderId = message.sender_id;
     const monthYear = moment.unix(message.created_at).format("MMM-YYYY");
 
@@ -68,5 +69,6 @@ export const processMessage = (message, state) => {
 
 export const processMessages = (messages, state) => {
     messages.forEach(message => processMessage(message, state));
+    renderVisualization(state);
     console.log(state);
 }

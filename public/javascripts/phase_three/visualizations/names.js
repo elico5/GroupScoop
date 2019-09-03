@@ -6,7 +6,7 @@ const createName = name => {
 }
 
 export default (state, visualizationContainer) => {
-    const groupId = state.ui.groups.selected;
+    const groupId = state.ui.phaseTwo.selected;
     let names;
     if (state.ui.phaseThree.dataFilter === 'group') {
         names = state.groups[groupId].nicknames;

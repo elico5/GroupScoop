@@ -6,7 +6,7 @@ const createDescription = description => {
 }
 
 export default (state, visualizationContainer) => {
-    const groupId = state.ui.groups.selected;
+    const groupId = state.ui.phaseTwo.selected;
     const descriptions = state.groups[groupId].topics;
     const descriptionsContainer = document.createElement('div');
     descriptionsContainer.classList.add('descriptions-container');

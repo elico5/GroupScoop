@@ -9,7 +9,7 @@ export default (state, pageNumber) => {
             const results = data.response;
             if (results.length === 0) {
                 document.getElementById('next-page-button').style.display = 'none';
-                state.ui.groups.loadedAll = true;
+                state.ui.phaseTwo.loadedAll = true;
             } else {
                 results.forEach((groupObject, i) => {
                     const groupIndex = i + (pageNumber - 1) * 5;
@@ -17,11 +17,11 @@ export default (state, pageNumber) => {
                 });
                 if (results.length < 5) {
                     document.getElementById('next-page-button').style.display = 'none';
-                    state.ui.groups.loadedAll = true;
+                    state.ui.phaseTwo.loadedAll = true;
                 }
-                state.ui.groups.selected = (pageNumber - 1) * 5;
-                state.ui.groups.currentPage = pageNumber;
-                state.ui.groups.loadedPageCount = pageNumber;
+                state.ui.phaseTwo.selected = (pageNumber - 1) * 5;
+                state.ui.phaseTwo.currentPage = pageNumber;
+                state.ui.phaseTwo.loadedPageCount = pageNumber;
             }
         }
     );

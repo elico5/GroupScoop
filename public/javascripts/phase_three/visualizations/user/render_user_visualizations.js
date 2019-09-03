@@ -1,5 +1,6 @@
 import renderOverview from './overview';
 import renderTopMessages from '../top_messages';
+import renderGraph from '../graphs/render_graph';
 import renderAvatars from '../avatars';
 import renderNicknames from '../names';
 
@@ -12,7 +13,7 @@ export default (state, visualizationContainer) => {
             renderTopMessages(state, visualizationContainer);
             break;
         case '2':
-            // 2 = Monthly
+            renderGraph(state,visualizationContainer);
             break;
         case '3':
             renderAvatars(state, visualizationContainer);

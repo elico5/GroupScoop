@@ -8,7 +8,7 @@ const groupScoopState = {
     scoopUser: {},
     groups: {},
     ui: {
-      groups: {
+      phaseTwo: {
         loadedAll: false,
         selected: 0
       },

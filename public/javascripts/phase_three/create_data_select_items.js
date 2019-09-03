@@ -7,7 +7,7 @@
 
 const createGroupSelectItem = state => {
     // Refactor with refactoring of the ui slice of state
-    const groupDetails = state.groups[state.ui.groups.selected];
+    const groupDetails = state.groups[state.ui.phaseTwo.selected];
     document.getElementById('group-data-select-image').src = groupDetails.imageUrl;
     document.getElementById('group-data-select-name').innerHTML = groupDetails.name;
     // Add event listener to div? Give it data attribute
@@ -37,7 +37,7 @@ export const createUserSelectItem = memberObject => {
 export const createDataSelectItems = state => {
     // refactor with ui slice of state refactoring?
     createGroupSelectItem(state);
-    Object.values(state.groups[state.ui.groups.selected].members).forEach(memberObject => {
+    Object.values(state.groups[state.ui.phaseTwo.selected].members).forEach(memberObject => {
         createUserSelectItem(memberObject);
     })
 }

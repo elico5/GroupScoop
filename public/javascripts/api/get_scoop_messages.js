@@ -2,7 +2,7 @@ import { processMessages } from "../util/collection/process_message";
 
 export const getInitialMessages = (state, fetchQueue) => {
     const apiKey = state.scoopUser.apiKey;
-    const groupId = state.groups[state.ui.groups.selected].groupId;
+    const groupId = state.groups[state.ui.phaseTwo.selected].groupId;
     return fetch(`/user/${apiKey}/groups/${groupId}/messages`).then(
         function(response) {
             if (!response.ok) {
@@ -23,7 +23,7 @@ export const getInitialMessages = (state, fetchQueue) => {
 
 export const getMessages = (state, beforeId, fetchQueue) => {
     const apiKey = state.scoopUser.apiKey;
-    const groupId = state.groups[state.ui.groups.selected].groupId;
+    const groupId = state.groups[state.ui.phaseTwo.selected].groupId;
     return fetch(`/user/${apiKey}/groups/${groupId}/messages/${beforeId}`).then(
         function (response) {
             if (!response.ok) {

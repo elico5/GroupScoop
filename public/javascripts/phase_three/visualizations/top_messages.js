@@ -65,7 +65,7 @@ const createTopMessage = message => {
 };
 
 export default (state, visualizationContainer) => {
-    const groupId = state.ui.groups.selected;
+    const groupId = state.ui.phaseTwo.selected;
     let topMessages;
     if (state.ui.phaseThree.dataFilter === 'group') {
         topMessages = state.groups[groupId].topMessages.data;

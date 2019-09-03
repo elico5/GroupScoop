@@ -41,37 +41,37 @@ export const createGroupItem = (groupIndex, groupDetails) => {
 };
 
 export const goRight = state => {
-    if (!state.ui.groups.loadedAll && state.ui.groups.currentPage === state.ui.groups.loadedPageCount) {
-        if (state.ui.groups.currentPage === 1) {
+    if (!state.ui.phaseTwo.loadedAll && state.ui.phaseTwo.currentPage === state.ui.phaseTwo.loadedPageCount) {
+        if (state.ui.phaseTwo.currentPage === 1) {
             document.getElementById('prev-page-button').style.display = 'unset';
         }
-        getScoopGroups(state, state.ui.groups.currentPage + 1).then(
+        getScoopGroups(state, state.ui.phaseTwo.currentPage + 1).then(
             () => {
                 renderGroupList(state);
             }
         );
     } else {
-        if (state.ui.groups.loadedAll && state.ui.groups.currentPage === state.ui.groups.loadedPageCount - 1) {
+        if (state.ui.phaseTwo.loadedAll && state.ui.phaseTwo.currentPage === state.ui.phaseTwo.loadedPageCount - 1) {
             document.getElementById('next-page-button').style.display = 'none';
         }
-        if (state.ui.groups.currentPage === 1) {
+        if (state.ui.phaseTwo.currentPage === 1) {
             document.getElementById('prev-page-button').style.display = 'unset';
         }
-        state.ui.groups.selected = state.ui.groups.currentPage * 5;
-        state.ui.groups.currentPage++;
+        state.ui.phaseTwo.selected = state.ui.phaseTwo.currentPage * 5;
+        state.ui.phaseTwo.currentPage++;
         renderGroupList(state);
     }
 };
 
 export const goLeft = state => {
-    if (state.ui.groups.currentPage === 2) {
+    if (state.ui.phaseTwo.currentPage === 2) {
         document.getElementById('prev-page-button').style.display = 'none';
     }
-    if (state.ui.groups.currentPage === state.ui.groups.loadedPageCount) {
+    if (state.ui.phaseTwo.currentPage === state.ui.phaseTwo.loadedPageCount) {
         document.getElementById('next-page-button').style.display = 'unset';
     }
-    state.ui.groups.currentPage--;
-    state.ui.groups.selected = state.ui.groups.currentPage * 5 - 1;
+    state.ui.phaseTwo.currentPage--;
+    state.ui.phaseTwo.selected = state.ui.phaseTwo.currentPage * 5 - 1;
     renderGroupList(state);
 };
 
@@ -82,7 +82,7 @@ export const renderGroupPrompt = state => {
 }
 
 export const renderGroupSelect = (state) => {
-    const groupDetails = state.groups[state.ui.groups.selected];
+    const groupDetails = state.groups[state.ui.phaseTwo.selected];
     document.getElementById('group-select-left-title').innerHTML = groupDetails.name;
     document.getElementById('group-select-group-image').src = groupDetails.imageUrl;
     document.getElementById('group-select-left-description').innerHTML = groupDetails.description;
@@ -95,7 +95,7 @@ export const select = state => {
     return e => {
         document.getElementsByClassName('group-item-container selected').item(0).classList.remove('selected');
         e.currentTarget.classList.add('selected');
-        state.ui.groups.selected = parseInt(e.currentTarget.dataset.groupIndex);
+        state.ui.phaseTwo.selected = parseInt(e.currentTarget.dataset.groupIndex);
         renderGroupSelect(state);
     }
 }
@@ -103,14 +103,14 @@ export const select = state => {
 export const renderGroupList = state => {
     document.querySelectorAll('.group-item-container').forEach(ele => ele.remove());
     const listContainerElement = document.getElementById('group-list-inner-container');
-    const nextPageStart = state.ui.groups.currentPage * 5;
+    const nextPageStart = state.ui.phaseTwo.currentPage * 5;
     for (let i = 5; i >= 1; i--) {
         const groupIndex = nextPageStart - i;
         const group = state.groups[groupIndex];
         if (group) {
             const listItem = createGroupItem(groupIndex, group);
             listItem.addEventListener('click', select(state));
-            if (groupIndex === state.ui.groups.selected) {
+            if (groupIndex === state.ui.phaseTwo.selected) {
                 listItem.classList.add('selected');
             }
             listContainerElement.appendChild(listItem);

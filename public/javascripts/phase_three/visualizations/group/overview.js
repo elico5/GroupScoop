@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 export default (state, visualizationContainer) => {
-    const groupId = state.ui.groups.selected;
+    const groupId = state.ui.phaseTwo.selected;
     const groupObject = state.groups[groupId];
 
     const avatarContainer = document.createElement('div');

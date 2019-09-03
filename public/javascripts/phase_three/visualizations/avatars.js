@@ -11,7 +11,7 @@ const createAvatar = avatar => {
 }
 
 export default (state, visualizationContainer) => {
-    const groupId = state.ui.groups.selected;
+    const groupId = state.ui.phaseTwo.selected;
     let avatars;
     if (state.ui.phaseThree.dataFilter === 'group') {
         avatars = state.groups[groupId].avatars;
