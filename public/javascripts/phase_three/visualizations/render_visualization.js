@@ -1,14 +1,13 @@
-// import renderGroupVisualization
-// import renderUserVisualization
+import renderUserVisualization from './user/render_user_visualizations';
+import renderGroupVisualization from './group/render_group_visualizations';
 
 export default state => {
     const previousVisualizationContainer = document.getElementById('visualization-container');
     const nextVisualizationContainer = previousVisualizationContainer.cloneNode(false);
-    // if group
-    if (state.ui.phaseTwo.dataFilter === 'group') {
-        // render group visualization(state, nextVisContainer)?
+    if (state.ui.phaseThree.dataFilter === 'group') {
+        renderGroupVisualization(state, nextVisualizationContainer);
     } else {
-        // render user visualization(state, nextVisContainer)?
+        renderUserVisualization(state, nextVisualizationContainer);
     }
     previousVisualizationContainer.parentNode.replaceChild(nextVisualizationContainer, previousVisualizationContainer);
 }

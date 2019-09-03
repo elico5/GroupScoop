@@ -1,21 +1,23 @@
 import renderOverview from './overview';
+import renderTopMessages from '../top_messages';
+import renderAvatars from '../avatars';
+import renderNicknames from '../names';
 
 export default (state, visualizationContainer) => {
     switch (state.ui.phaseThree.vizFilter) {
         case '0':
-            // 0 = Overview
-            // renderOverview(state, visualizationContainer);
+            renderOverview(state, visualizationContainer);
             break;
         case '1':
-            // 1 = Top Messages
+            renderTopMessages(state, visualizationContainer);
             break;
         case '2':
             // 2 = Monthly
             break;
         case '3':
-            // 3 = Avatars
+            renderAvatars(state, visualizationContainer);
             break;
         case '4':
-            // 4 = Nicknames
+            renderNicknames(state, visualizationContainer);
     }
 }

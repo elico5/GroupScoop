@@ -1,3 +1,5 @@
+import renderVisualization from './visualizations/render_visualization';
+
 const selectDataFilter = state => {
     return e => {
         const selectedDataFilterId = state.ui.phaseThree.dataFilter + '-data-filter';
@@ -22,9 +24,7 @@ const selectDataFilter = state => {
             state.ui.phaseThree.vizFilter = '0';
         }
         state.ui.phaseThree.dataFilter = e.currentTarget.dataset.dataFilter;
-        // renderVisualization(state);
-                // clears viz container
-                 // repopulated based on combination of data and viz filter
+        renderVisualization(state);
     }
 }
 

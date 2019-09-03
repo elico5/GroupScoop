@@ -1,4 +1,5 @@
 import { createDataFilters } from './data_filters';
+import renderVisualization from './visualizations/render_visualization';
 
 const selectGroupVizFilter = state => {
     return e => {
@@ -9,7 +10,7 @@ const selectGroupVizFilter = state => {
         document.getElementById(previousVizFilterId).classList.remove('selected');
         e.currentTarget.classList.add('selected');
         state.ui.phaseThree.vizFilter = e.currentTarget.dataset.vizFilter;
-        // renderVisualization(state);
+        renderVisualization(state);
     }
 }
 
@@ -40,7 +41,7 @@ const selectUserVizFilter = state => {
         document.getElementById(previousVizFilterId).classList.remove('selected');
         e.currentTarget.classList.add('selected');
         state.ui.phaseThree.vizFilter = e.currentTarget.dataset.vizFilter;
-        // renderVisualization(state);
+        renderVisualization(state);
     }
 }
 
@@ -59,11 +60,8 @@ const createUserVizFilters = state => {
 };
 
 export default state => {
-    // createGroupDataFilter(state);
-    // Object.values(state.groups[state.ui.groups.selected].members).forEach(memberObject => {
-    //     createUserDataFilter(memberObject);
-    // })
     createDataFilters(state);
     createGroupVizFilters(state);
     createUserVizFilters(state);
+    renderVisualization(state);
 }
