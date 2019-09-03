@@ -9,7 +9,7 @@ export default state => {
         targets: '[class|=load-rectangle]',
         width: '100%',
         easing: 'easeInOutQuad',
-        delay: anime.stagger(300),
+        delay: anime.stagger(200),
         complete: () => {
             document.getElementById('modal-background').style.display = 'none';
             document.getElementById('footer-logo').style.display = 'unset';

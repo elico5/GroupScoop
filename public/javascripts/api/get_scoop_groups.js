@@ -1,7 +1,7 @@
 import newGroupSlice from '../util/collection/new_group_slice';
 
 export default (state, pageNumber) => {
-    const apiKey = state.scoopUser.apiKey;
+    const apiKey = state.user.apiKey;
     return fetch(`/user/${apiKey}/groups/page/${pageNumber}`).then(
         response => response.json()
     ).then(

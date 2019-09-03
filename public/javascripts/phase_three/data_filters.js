@@ -29,7 +29,6 @@ const selectDataFilter = state => {
 }
 
 export const createGroupDataFilter = state => {
-    // Refactor with refactoring of the ui slice of state
     const groupDetails = state.groups[state.ui.phaseTwo.selected];
     document.getElementById('group-data-filter-image').src = groupDetails.imageUrl;
     document.getElementById('group-data-filter-name').innerHTML = groupDetails.name;
@@ -62,7 +61,6 @@ export const createUserDataFilter = memberObject => {
 }
 
 export const createDataFilters = state => {
-    // refactor with ui slice of state refactoring?
     createGroupDataFilter(state);
     const userDataFilterContainer = document.getElementById('user-data-filters-container');
     Object.values(state.groups[state.ui.phaseTwo.selected].members).forEach(memberObject => {

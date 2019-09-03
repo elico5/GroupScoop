@@ -5,7 +5,7 @@ export default () => {
         targets: '[class|=load-rectangle]',
         left: '100%',
         easing: 'easeInOutQuad',
-        delay: anime.stagger(300),
+        delay: anime.stagger(200),
         complete: () => {
             const loadRectangles = document.querySelectorAll("div[class|='load-rectangle']");
             for (let i = 0; i < loadRectangles.length; i++) {

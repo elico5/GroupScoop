@@ -9,7 +9,7 @@ export default state => {
         targets: '[class|=load-rectangle]',
         width: '100%',
         easing: 'easeInOutQuad',
-        delay: anime.stagger(300),
+        delay: anime.stagger(200),
         complete: () => {
             const fetchQueue = new FetchQueue();
             fetchQueue.start();
@@ -19,13 +19,6 @@ export default state => {
             // put the above 2 lines in initializeDOM?
                 // generally move these logic portions into helper files?
             initializePhaseThreeDOM(state); 
-            // visualize(state); //?
-                // * renderVisualization(state);
-                    // put in process messages (or process message?)
-                        // resolution with pause seemingly has it make more sense after bursts?
-                    // clear out what is in visualization container
-                    // replace with new data
-                // put this in process messages?
             getInitialMessages(state, fetchQueue).then(
                 () => {
                     document.getElementById('data-visualization-outer-container').style.display = 'unset';

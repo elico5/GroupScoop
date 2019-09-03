@@ -7,7 +7,7 @@ export default state => {
         targets: '[class|=load-rectangle]',
         width: '100%',
         easing: 'easeInOutQuad',
-        delay: anime.stagger(300),
+        delay: anime.stagger(200),
         complete: () => {
             greetScoopUser(state);
             finishLoad();
