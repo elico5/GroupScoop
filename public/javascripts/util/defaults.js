@@ -1,0 +1,1 @@
+export const defaultUserAvatar = 'https://i.groupme.com/300x300.png.6485c42fdeaa45b5a4b986b9cb1c91a2';

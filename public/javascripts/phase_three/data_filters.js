@@ -1,4 +1,4 @@
-import renderVisualization from './visualizations/render_visualization';
+import { renderVisualization } from './visualizations/visualization';
 
 const selectDataFilter = state => {
     return e => {
@@ -58,6 +58,13 @@ export const createUserDataFilter = memberObject => {
     filter.setAttribute('data-data-filter', memberObject.userId);
 
     return filter;
+}
+
+export const renderSingleUserFilter = (state, memberObject) => {
+    const userDataFilterContainer = document.getElementById('user-data-filters-container');
+    const filter = createUserDataFilter(memberObject);
+    filter.addEventListener('click', selectDataFilter(state));
+    userDataFilterContainer.appendChild(filter);
 }
 
 export const createDataFilters = state => {

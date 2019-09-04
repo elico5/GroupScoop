@@ -1,4 +1,5 @@
 import loadPhaseOne from '../transitions/load_phase_one';
+import { defaultUserAvatar } from '../util/defaults';
 
 export default state => {
     const apiKey = document.getElementById('api-key-input').value;
@@ -17,6 +18,7 @@ export default state => {
                 name: state.user.name,
                 created_at: state.user.createdAt
             } = data.response);
+            state.user.imageUrl = state.user.imageUrl || defaultUserAvatar;
             loadPhaseOne(state);
         }
     ).catch(

@@ -403,6 +403,15 @@ button i {
     display: none;
 }
 
+#back-to-groups {
+    display: none;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 900;
+    width: max-content;
+    padding: 0px 10px;
+}
+
 /* VISUALIZATION FILTERS */
 
 #data-visualization-inner-container {
@@ -517,6 +526,11 @@ button i {
     font-size: 18px;
     font-weight: 900;
     margin: 10px 0;
+}
+
+.overview-detail {
+    width: 80%;
+    text-align: center;
 }
 
 /* BAR GRAPH */

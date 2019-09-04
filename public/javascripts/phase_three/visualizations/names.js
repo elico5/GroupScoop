@@ -1,11 +1,11 @@
-const createName = name => {
+export const createName = name => {
     const nameElement = document.createElement('div');
     nameElement.classList.add('show-name');
     nameElement.innerHTML = name;
     return nameElement;
 }
 
-export default (state, visualizationContainer) => {
+export const renderNames = (state, visualizationContainer) => {
     const groupId = state.ui.phaseTwo.selected;
     let names;
     if (state.ui.phaseThree.dataFilter === 'group') {

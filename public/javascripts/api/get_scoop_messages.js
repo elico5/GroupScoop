@@ -42,7 +42,7 @@ export const getMessages = (state, beforeId, fetchQueue) => {
     ).catch(
         () => {
             document.getElementById('pause-button').style.display = 'none';
-            console.log('manipulate DOM instead of raising this message');
+            document.getElementById('back-to-groups').style.display = 'unset';
         }
     )
 }

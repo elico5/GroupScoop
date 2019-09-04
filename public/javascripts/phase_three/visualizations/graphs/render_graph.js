@@ -9,13 +9,15 @@ export default (state, visualizationContainer) => {
     canvas.setAttribute('width', totalWidth);
     visualizationContainer.appendChild(canvas);
 
-    const margin = 50;
-    const graphHeight = totalHeight - margin * 2;
-    const graphWidth = totalWidth - margin * 2;
+    const topMargin = 40;
+    const bottomMargin = 80;
+    const sideMargins = 40;
+    const graphHeight = totalHeight - topMargin - bottomMargin;
+    const graphWidth = totalWidth - sideMargins * 2;
 
     const svg = d3.select('svg');
     const graph = svg.append('g')
-        .attr('transform', `translate(${margin}, ${margin})`);
+        .attr('transform', `translate(${sideMargins}, ${topMargin})`);
     graph.append('rect')
         .attr('class', 'bar-graph-background')
         .attr('width', graphWidth)
@@ -24,7 +26,7 @@ export default (state, visualizationContainer) => {
     const { data, max, title } = getGraphData(state);
 
     svg.append('text')
-        .attr('y', 35)
+        .attr('y', 25)
         .attr('x', totalWidth / 2)
         .attr('text-anchor', 'middle')
         .attr('class', 'bar-graph-title')

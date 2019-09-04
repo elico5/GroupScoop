@@ -37,7 +37,7 @@ export default (state, visualizationContainer) => {
     const bootCount = memberObject.boots;
     const bC = document.createElement('div');
     bC.classList.add('overview-detail');
-    bC.innerHTML = `Boot Count: ${bootCount}`;
+    bC.innerHTML = `Members Booted: ${bootCount}`;
 
     const overviewContainer = document.createElement('div');
     overviewContainer.id = 'overview-container';

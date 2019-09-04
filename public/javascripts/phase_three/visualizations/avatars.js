@@ -1,16 +1,18 @@
-const createAvatar = avatar => {
+import { defaultUserAvatar } from '../../util/defaults'
+
+export const createAvatar = avatar => {
     const avatarElement = document.createElement('div');
     avatarElement.classList.add('avatar-show-container');
 
     const avatarImage = document.createElement('img');
     avatarImage.classList.add('avatar-show-image');
-    avatarImage.src = avatar;
+    avatarImage.src = avatar || defaultUserAvatar;
 
     avatarElement.append(avatarImage);
     return avatarElement;
 }
 
-export default (state, visualizationContainer) => {
+export const renderAvatars = (state, visualizationContainer) => {
     const groupId = state.ui.phaseTwo.selected;
     let avatars;
     if (state.ui.phaseThree.dataFilter === 'group') {

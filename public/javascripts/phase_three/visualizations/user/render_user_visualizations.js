@@ -1,8 +1,8 @@
 import renderOverview from './overview';
 import { renderTopMessages } from '../top_messages';
 import renderGraph from '../graphs/render_graph';
-import renderAvatars from '../avatars';
-import renderNicknames from '../names';
+import { renderAvatars } from '../avatars';
+import { renderNames } from '../names';
 
 export default (state, visualizationContainer) => {
     switch (state.ui.phaseThree.vizFilter) {
@@ -19,6 +19,6 @@ export default (state, visualizationContainer) => {
             renderAvatars(state, visualizationContainer);
             break;
         case '4':
-            renderNicknames(state, visualizationContainer);
+            renderNames(state, visualizationContainer);
     }
 }

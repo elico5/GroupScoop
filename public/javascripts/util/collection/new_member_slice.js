@@ -1,4 +1,5 @@
 import TinyQueue from "tinyqueue";
+import { defaultUserAvatar } from '../defaults';
 
 export default (id, memberObject, messageObject) => {
     const memberDetails = {};
@@ -8,6 +9,7 @@ export default (id, memberObject, messageObject) => {
             image_url: memberDetails.imageUrl,
             name: memberDetails.name
         } = memberObject);
+        memberDetails.imageUrl = memberDetails.imageUrl || defaultUserAvatar;
         memberDetails.nicknames = [memberObject.nickname];
         memberDetails.avatars = [memberObject.image_url];
     } else if (messageObject) {
@@ -16,11 +18,12 @@ export default (id, memberObject, messageObject) => {
             avatar_url: memberDetails.imageUrl,
             name: memberDetails.name
         } = messageObject);
+        memberDetails.imageUrl = memberDetails.imageUrl || defaultUserAvatar;
         memberDetails.nicknames = [messageObject.name];
-        memberDetails.avatars = [messageObject.avatar_url];
+        memberDetails.avatars = [memberDetails.imageUrl];
     } else {
         memberDetails.userId = id;
-        memberDetails.imageUrl = 'https://i.groupme.com/300x300.png.6485c42fdeaa45b5a4b986b9cb1c91a2';
+        memberDetails.imageUrl = defaultUserAvatar;
         memberDetails.name = 'Unknown';
         memberDetails.avatars = [];
         memberDetails.nicknames = [];

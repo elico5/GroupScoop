@@ -1,5 +1,5 @@
 import { createDataFilters } from './data_filters';
-import renderVisualization from './visualizations/render_visualization';
+import { renderVisualization } from './visualizations/visualization';
 
 const selectGroupVizFilter = state => {
     return e => {

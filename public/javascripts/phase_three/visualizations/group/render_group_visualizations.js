@@ -1,8 +1,8 @@
 import renderOverview from './overview';
 import { renderTopMessages } from '../top_messages';
-import renderAvatars from '../avatars';
-import renderGroupNames from '../names';
-import renderDescriptions from './descriptions';
+import { renderAvatars } from '../avatars';
+import { renderNames } from '../names';
+import { renderDescriptions } from './descriptions';
 import renderGraph from '../graphs/render_graph';
 
 export default (state, visualizationContainer) => {
@@ -17,7 +17,7 @@ export default (state, visualizationContainer) => {
             renderAvatars(state, visualizationContainer);
             break;
         case '8':
-            renderGroupNames(state, visualizationContainer);
+            renderNames(state, visualizationContainer);
             break;
         case '9':
             renderDescriptions(state, visualizationContainer);

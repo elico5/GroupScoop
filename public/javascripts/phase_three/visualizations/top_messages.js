@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { defaultUserAvatar } from '../../util/defaults';
 
 export const createTopMessage = message => {
     const container = document.createElement('div');
@@ -14,7 +15,7 @@ export const createTopMessage = message => {
     avatarContainer.classList.add('message-circular');
     const avatar = document.createElement('img');
     avatar.classList.add('image-circular');
-    avatar.src = message.avatar_url;
+    avatar.src = message.avatar_url || defaultUserAvatar;
     avatarContainer.appendChild(avatar);
     const nameTime = document.createElement('div');
     nameTime.classList.add('message-name-time');
