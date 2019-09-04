@@ -1,8 +1,9 @@
 import moment from 'moment';
 
-const createTopMessage = message => {
+export const createTopMessage = message => {
     const container = document.createElement('div');
     container.classList.add('top-message');
+    container.id = `message-${message.id}`;
 
     const upper = document.createElement('div');
     upper.classList.add('top-message-upper');
@@ -15,27 +16,36 @@ const createTopMessage = message => {
     avatar.classList.add('image-circular');
     avatar.src = message.avatar_url;
     avatarContainer.appendChild(avatar);
-
+    const nameTime = document.createElement('div');
+    nameTime.classList.add('message-name-time');
     const name = document.createElement('div');
     name.classList.add('top-message-name');
     name.innerHTML = message.name;
-    upperLeft.append(avatarContainer, name);
-
-
     const time = document.createElement('div');
     time.classList.add('top-message-time');
     time.innerHTML = moment.unix(message.created_at).format("LLLL");
+    nameTime.append(name, time);
+    upperLeft.append(avatarContainer, nameTime);
 
-    upper.append(upperLeft, time);
+    const upperRight = document.createElement('div');
+    upperRight.classList.add('top-message-upper-right');
+    const heart = document.createElement('div');
+    heart.innerHTML = '<i class="fas fa-heart"></i>';
+    const count = document.createElement('div');
+    count.classList.add('top-message-favorite-count');
+    count.innerHTML = String(message.favorited_by.length);
+    upperRight.append(heart, count);
+
+    upper.append(upperLeft, upperRight);
 
     const lower = document.createElement('div');
     lower.classList.add('top-message-lower');
-    const lowerLeft = document.createElement('div');
-    lowerLeft.classList.add('top-message-lower-left');
+
     if (message.text) {
         const text = document.createElement('div');
-        text.innerHTML = message.text;
-        lowerLeft.appendChild(text);
+        text.classList.add('top-message-text');
+        text.innerHTML = message.text.replace(/@/g, '<i class="fas fa-at"></i>');
+        lower.appendChild(text);
     }
     const imageAttachment = message.attachments.find(attachment => attachment.type === 'image');
     if (imageAttachment) {
@@ -45,26 +55,14 @@ const createTopMessage = message => {
         image.classList.add('attachment-image');
         image.src = imageAttachment.url;
         imageContainer.append(image);
-        lowerLeft.appendChild(imageContainer);
+        lower.appendChild(imageContainer);
     }
-
-    const lowerRight = document.createElement('div');
-    lowerRight.classList.add('top-message-lower-right');
-
-    const heart = document.createElement('div');
-    heart.innerHTML = '<i class="fas fa-heart"></i>';
-    const count = document.createElement('div');
-    count.classList.add('top-message-favorite-count');
-    count.innerHTML = String(message.favorited_by.length);
-    lowerRight.append(heart, count);
-
-    lower.append(lowerLeft, lowerRight);
 
     container.append(upper, lower);
     return container;
 };
 
-export default (state, visualizationContainer) => {
+export const renderTopMessages = (state, visualizationContainer) => {
     const groupId = state.ui.phaseTwo.selected;
     let topMessages;
     if (state.ui.phaseThree.dataFilter === 'group') {

@@ -1,5 +1,5 @@
 import renderOverview from './overview';
-import renderTopMessages from '../top_messages';
+import { renderTopMessages } from '../top_messages';
 import renderAvatars from '../avatars';
 import renderGroupNames from '../names';
 import renderDescriptions from './descriptions';

@@ -77,8 +77,7 @@ export const goLeft = state => {
 
 export const renderGroupPrompt = state => {
     document.getElementById('group-select-user-image').src = state.user.imageUrl;
-    const firstName = state.user.name.split(" ")[0];
-    document.getElementById('group-select-prompt-text').innerHTML = `Hey ${firstName} - select a group from the pages on the right and then click the button below to keep moving!`;
+    document.getElementById('group-select-prompt-text').innerHTML = `Please select a group from the pages on the right and then click the button on the left to get the scoop! Click anywhere on the page to close this prompt.`;
 }
 
 export const renderGroupSelect = (state) => {
