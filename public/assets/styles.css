@@ -771,12 +771,12 @@ button i {
     text-align: center;
 }
 
-#api-key-button {
+#api-key-button, #demo-key-button {
     width: 80%;
     background-color: var(--bright-blue);
     color: white;
-    height: 50px;
-    margin: 10px 0;
+    height: 35px;
+    margin: 10px 0 5px 0;
     border-radius: 4px;
     font-size: 20px;
     font-weight: 900;

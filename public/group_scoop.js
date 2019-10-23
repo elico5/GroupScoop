@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('portfolio-link').addEventListener('click', openNewTab(portfolioUrl));
     document.getElementById('github-link').addEventListener('click', openNewTab(githubUrl));
     document.getElementById('api-key-button').addEventListener('click', function () {
-      getScoopUser(groupScoopState);
+      getScoopUser(groupScoopState, false);
+    });
+    document.getElementById('demo-key-button').addEventListener('click', function() {
+      getScoopUser(groupScoopState, true);
     });
 });

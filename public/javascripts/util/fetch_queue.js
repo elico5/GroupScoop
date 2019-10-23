@@ -1,8 +1,9 @@
 import regeneratorRuntime from 'regenerator-runtime';
+import Queue from 'queue-fifo';
 
 class FetchQueue {
     constructor() {
-        this.queue = [];
+        this.queue = new Queue();
         this.paused = false;
         this.start = this.start.bind(this);
         this.resume = this.resume.bind(this);
@@ -23,16 +24,16 @@ class FetchQueue {
         this.paused = true;
     }
 
-    enqueue(funk) {
-        this.queue.push(funk);
+    enqueue(func) {
+        this.queue.enqueue(func);
     }
 
     dequeue() {
-        if (!this.paused && this.queue.length > 0) {
-            const funk = this.queue.shift();
+        if (!this.paused && !this.queue.isEmpty()) {
+            const func = this.queue.dequeue();
             this.paused = true;
             (async () => {
-                funk();
+                func();
             })().then(
                 () => this.paused = false
             );

@@ -1,8 +1,9 @@
 import loadPhaseOne from '../transitions/load_phase_one';
+import creds from '../../../creds';
 import { defaultUserAvatar } from '../util/defaults';
 
-export default state => {
-    const apiKey = document.getElementById('api-key-input').value;
+export default (state, demo) => {
+    const apiKey = demo ? creds.key : document.getElementById('api-key-input').value;
     state.user.apiKey = apiKey;
     fetch(`/user/${apiKey}`).then(
         function(response) {

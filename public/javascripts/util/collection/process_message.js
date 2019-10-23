@@ -111,5 +111,4 @@ export const processMessage = (message, state) => {
 export const processMessages = (messages, state) => {
     messages.forEach(message => processMessage(message, state));
     updateVisualization(state);
-    console.log(state);
 }

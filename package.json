@@ -37,6 +37,7 @@
     "express": "^4.17.1",
     "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
+    "queue-fifo": "^0.2.6",
     "regenerator-runtime": "^0.13.3",
     "tinyqueue": "^2.0.3",
     "webpack": "^4.39.2",
